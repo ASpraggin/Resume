@@ -1,0 +1,106 @@
+\documentclass[12pt,letterpaper,sans]{moderncv}
+
+% moderncv themes
+\moderncvstyle{casual}         % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}     % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+% adjust the page margins
+\usepackage[scale=0.75,top=1.5cm, bottom=3.5cm,left=.75in,right=.75in]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{5cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+\makeatletter
+\newcommand*{\addresstwo}[3]{\def\@addressstreettwo{#1}\def\@addresscitytwo{#2}\def\@addresscountrytwo{#3}}
+
+\renewcommand*{\namefont}{\fontsize{28}{40}\mdseries\upshape}
+
+\renewcommand*{\makecvfoot}{%
+  \recomputecvfootlengths{}%
+  \fancypagestyle{plain}{%
+    \fancyfoot[c]{%
+      \parbox[b]{\footwidth}{%
+        \centering%
+        \color{color2}\addressfont%
+        \vspace{\baselineskip}% forces a white line to ensure space between main text and footer (as footer height can't be known in advance)
+        \ifthenelse{\isundefined{\@addressstreet}}{}{\addtofoot[]{\addresssymbol\@addressstreet}%
+          \ifthenelse{\equal{\@addresscity}{}}{}{\addtofoot[~--~]{\@addresscity}}% if \addresstreet is defined, \addresscity and \addresscountry will always be defined but could be empty
+          \ifthenelse{\equal{\@addresscountry}{}}{}{\addtofoot[~--~]{\@addresscountry}\flushfoot\\}% <========================================================
+        \ifthenelse{\isundefined{\@addressstreettwo}}{}{\addtofoot[]{\addresssymbol\@addressstreettwo}%
+          \ifthenelse{\equal{\@addresscitytwo}{}}{}{\addtofoot[~--~]{\@addresscitytwo}}%
+          \ifthenelse{\equal{\@addresscountrytwo}{}}{}{\addtofoot[~--~]{\@addresscountrytwo}}%
+          \flushfoot\@firstfootelementtrue\\}}% <=======================
+        \collectionloop{phones}{% the key holds the phone type (=symbol command prefix), the item holds the number
+          \addtofoot{\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
+        \ifthenelse{\isundefined{\@email}}{}{\addtofoot{\emailsymbol\emaillink{\@email}}}%
+        \ifthenelse{\isundefined{\@homepage}}{}{\addtofoot{\homepagesymbol\httplink{\@homepage}}}%
+        \collectionloop{socials}{% the key holds the social type (=symbol command prefix), the item holds the link
+          \addtofoot{\csname\collectionloopkey socialsymbol\endcsname\collectionloopitem}}%
+        \ifthenelse{\isundefined{\@extrainfo}}{}{\addtofoot{\@extrainfo}}%
+        \ifthenelse{\lengthtest{\footboxwidth=0pt}}{}{\flushfoot}% the lengthtest is required to avoid flushing an empty footer, which could cause a blank line due to the \\ after the address, if no other personal info is used
+        }}}%
+  \pagestyle{plain}}
+\makeatother
+
+
+\moderncvicons{marvosym} 
+
+
+% personal data
+\name{Aryeh}{Spraggins}
+%\address{16950 Silver Oak Circle}{Delray Beach, FL, 33445}{Current}
+%\addresstwo{7415 Carta Valley Dr.}{Dallas, TX, 75248}%{Permanent}
+\address{7415 Carta Valley Dr.}{Dallas, TX, 75248}%{Permanent}
+\phone[mobile]{(214)~519~4678}
+\email{aspraggins2017@fau.edu}
+\social[linkedin]{arispraggins}
+\social[github]{ASpraggin}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%-----       resume       ---------------------------------------------------------
+\vspace*{-2\baselineskip}
+\makecvtitle
+\vspace{-3\baselineskip}
+
+\section{Education}
+\cventry{April 2021}{Bachelors of Science in Physics and Mathematics, Minor in Data Science}{\linebreak Florida Atlantic University, Harriet L. Wilkes Honors College}{Jupiter FL}{\linebreak Honors Thesis on data manipulation for use in fish behavioral prediction}{}  
+\cventry{May 2017}{Graduate with Honors}{JJ Pearce High School}{Richardson TX}{}{}
+
+\section{Relevant Coursework}
+\cvline{}{Electricity and Magnetism, Intro to Data Science (Undergraduate and Graduate), Differential Equations, Discrete Math, Micro and Macro Economics, Intro to Set Theory, Matrix Theory, Data Visualisation, Solid Mechanics, Modern Algebra, Computational Science, Computational Social Science, Econometrics, Modern Analysis, Thermal Physics}
+
+\section{Experience}
+\cventry{Jan 2019-- Present}{Teachers Assistant - Physics 1 and 2 Labs}{FAU Honors College}{Jupiter, Fl}{}{
+\begin{itemize}%
+	\item Assisted with creation and implementation of organizational system for lab.
+	\item Demonstrate labs via both remote and in person learning. Assist students with experiments.
+\end{itemize}}
+\cventry{June 2019-- Aug 2019}{Assistant Teacher}{Milagro Foundation}{Boca Raton, FL}{}{
+\begin{itemize}%
+\item Taught underserved and at-risk grade 4-6 children science by performing hands on experiments.
+\item Assisted in teaching k-3 children math skills. 
+\end{itemize}}
+\cventry{June 2014-- Aug 2017}{Senior Camp Counselor, Camp Counselor}{Jewish Community Center}{Dallas, TX}{}{
+\begin{itemize}%
+\item Oversaw fellow counselors in planning and leading activities for children.
+\item Mentored elementary age children in safe and engaging activities such as crafts, sports, swimming, and song.
+\end{itemize}}
+
+\section{Awards}
+\cvitem{April 2, 2021}{19\textsuperscript{th} FAU Annual Undergraduate Research Symposium. Presented thesis.}
+\cvitem{Mar 30, 2018}{15\textsuperscript{th} FAU Annual Undergraduate Research Symposium. Selected to present interactive art.}
+\cvitem{May 2014}{Eagle Scout, Boy Scouts of America}
+\cvitem{Dec 2015}{Elected to the National Honor Society, JJ Pearce High School, Richardson, TX}
+\cvitem{Mar 2014}{BSA Order of the Arrow Brotherhood. Recognized for service.}
+
+\section{Extracurricular Activities}
+\cvitem{2017--Present}{Member, FAU Intramural Foam Sword Fighting Team (Dagorhir)}
+\cvitem{July 2017}{1\textsuperscript{st} degree black belt, Karatedo}
+
+\section{Technical Experience}
+\cvline{languages}{Python, Markdown, Java, C, R}
+\cvline{technologies}{Vim, \LaTeX, Jupyter Notebooks}
+\clearpage
+\end{document}
