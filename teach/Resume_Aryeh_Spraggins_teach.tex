@@ -1,0 +1,134 @@
+\documentclass[12pt,letterpaper,sans]{moderncv}
+
+% moderncv themes
+\moderncvstyle{casual}         % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}     % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+% adjust the page margins
+\usepackage[scale=0.75,top=1.5cm, bottom=2.75cm,left=.75in,right=.75in]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{5cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+\makeatletter
+\newcommand*{\addresstwo}[3]{\def\@addressstreettwo{#1}\def\@addresscitytwo{#2}\def\@addresscountrytwo{#3}}
+
+\renewcommand*{\namefont}{\fontsize{28}{40}\mdseries\upshape}
+
+\renewcommand*{\makecvfoot}{%
+  \recomputecvfootlengths{}%
+  \fancypagestyle{plain}{%
+    \fancyfoot[c]{%
+      \parbox[b]{\footwidth}{%
+        \centering%
+        \color{color2}\addressfont%
+        \vspace{\baselineskip}% forces a white line to ensure space between main text and footer (as footer height can't be known in advance)
+        \ifthenelse{\isundefined{\@addressstreet}}{}{\addtofoot[]{\addresssymbol\@addressstreet}%
+          \ifthenelse{\equal{\@addresscity}{}}{}{\addtofoot[~--~]{\@addresscity}}% if \addresstreet is defined, \addresscity and \addresscountry will always be defined but could be empty
+          \ifthenelse{\equal{\@addresscountry}{}}{}{\addtofoot[~--~]{\@addresscountry}\flushfoot\\}% <========================================================
+        \ifthenelse{\isundefined{\@addressstreettwo}}{}{\addtofoot[]{\addresssymbol\@addressstreettwo}%
+          \ifthenelse{\equal{\@addresscitytwo}{}}{}{\addtofoot[~--~]{\@addresscitytwo}}%
+          \ifthenelse{\equal{\@addresscountrytwo}{}}{}{\addtofoot[~--~]{\@addresscountrytwo}}%
+          \flushfoot\@firstfootelementtrue\\}}% <=======================
+        \collectionloop{phones}{% the key holds the phone type (=symbol command prefix), the item holds the number
+          \addtofoot{\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
+        \ifthenelse{\isundefined{\@email}}{}{\addtofoot{\emailsymbol\emaillink{\@email}}}%
+        \ifthenelse{\isundefined{\@homepage}}{}{\addtofoot{\homepagesymbol\httplink{\@homepage}}}%
+        \collectionloop{socials}{% the key holds the social type (=symbol command prefix), the item holds the link
+          \addtofoot{\csname\collectionloopkey socialsymbol\endcsname\collectionloopitem}}%
+        \ifthenelse{\isundefined{\@extrainfo}}{}{\addtofoot{\@extrainfo}}%
+        \ifthenelse{\lengthtest{\footboxwidth=0pt}}{}{\flushfoot}% the lengthtest is required to avoid flushing an empty footer, which could cause a blank line due to the \\ after the address, if no other personal info is used
+        }}}%
+  \pagestyle{plain}}
+\makeatother
+
+
+\moderncvicons{marvosym} 
+
+
+% personal data
+\name{Aryeh (Ari)}{Spraggins}
+\address{2414 Harney St}{Vancouver, WA, 98660}%{Permanent}
+\phone[mobile]{(214)~519~4678}
+\email{ari.spraggins@gmail.com}
+\social[linkedin]{arispraggins}
+\social[github]{ASpraggin}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%-----       resume       ---------------------------------------------------------
+\vspace*{-2\baselineskip}
+\makecvtitle
+\vspace{-3\baselineskip}
+
+\section{Education}
+\cventry{Aug 2021 -- Apr 2024}{Select Masters level classes in Data Science}{University of Central Florida}{Orlando FL}{}{}
+\cventry{April 2021}{Bachelors of Science in Physics with Minors in Mathematics and Data Science}{\linebreak Florida Atlantic University, Honors College}{Jupiter FL}{\linebreak Honors Thesis: Data manipulation for use in fish behavioral prediction}{}  
+%\cventry{May 2017}{Graduate with Honors}{JJ Pearce High School}{Richardson TX}{}{}
+
+%\section{Relevant Expertise}
+%\cvline{}{Electricity and Magnetism, Data Science (Undergraduate and Graduate), Differential Equations, Discrete Math, Micro and Macro Economics, Set Theory, Matrix Theory, Data Visualisation, Solid Mechanics, Algebraic Principles, Computational Science, Computational Social Science, Econometrics, Big Data Analytics, Thermal Physics, Machine Learning, Data Visualizations, Data Modeling, Data Engineering}
+%\cvline{}{Algebraic Principles, Big Data Analytics, Computational Social Science, Data Modeling, Data Engineering, Data Science, Data Visualisation, Set Theory, Matrix Theory, Machine Learning,}
+
+\section{Experience}
+\cventry{Sep 2022 -- Present}{Data Science Consultant}{Contractor}{}{}{
+\begin{itemize}%
+	\item Wrote code and provided other deliverables to specification.
+	\item Performed data analysis on client datasets.
+	\item Implemented algorithms to answer client questions.
+\end{itemize}}
+
+\cventry{June 2021 -- Aug 2022}{Leasing Agent}{Riverwind at Alafaya Trail}{Oviedo, Fl}{Leasing Agent}{
+\begin{itemize}%
+	\item Project management.
+	\item Incident triage and mitigation.
+	\item Customer advocate in communication with management.
+\end{itemize}}
+\cventry{May 2021 -- Aug 2021}{Data Scientist}{Research \& Data Science Services, Office of Information Technology, Southern Methodist University}{Dallas, Tx}{Intern}{
+\begin{itemize}%
+	\item Developed scripts for cleaning large sets of scraped web data.
+	\item Performed clustering analysis to fuzzy-sort out non-viable data.
+	\item Provided data analysis support for multiple research projects.
+	\item Designed, specified, and sourced a Jetson cluster. 
+\end{itemize}}
+\cventry{Jan 2019-- April 2021}{Teaching Assistant - Physics 1 and 2 Labs}{FAU Honors College}{Jupiter, Fl}{}{
+\begin{itemize}%
+	\item Assisted with creation and implementation of organizational system for lab.
+	\item Demonstrated labs via remote and in person learning. Assisted students with experiments.
+\end{itemize}}
+\cventry{June 2019-- Aug 2019}{Assistant Teacher}{Milagro Foundation}{Boca Raton, FL}{}{
+\begin{itemize}%
+\item Taught underserved and at-risk grade 4-6 children science through hands on experiments.
+\item Assisted in teaching k-3 children math skills. 
+\end{itemize}}
+\cventry{June 2014-- Aug 2017}{Senior Camp Counselor, Camp Counselor}{Jewish Community Center}{Dallas, TX}{}{
+\begin{itemize}%
+\item Oversaw fellow counselors in planning and leading activities for children.
+\item Mentored elementary age children in safe and engaging activities such as crafts, sports, swimming, and song.
+\end{itemize}}
+
+\section{Awards}
+\cvitem{April 2, 2021}{FAU Annual Undergraduate Research Symposium, Invited Presenter.}
+%\cvitem{Mar 30, 2018}{FAU Annual Undergraduate Research Symposium. Selected to present interactive art.}
+\cvitem{May 2014}{Eagle Scout, Boy Scouts of America}
+%\cvitem{Dec 2015}{Elected to the National Honor Society, JJ Pearce High School, Richardson, TX}
+%\cvitem{Mar 2014}{BSA Order of the Arrow Brotherhood. Recognized for service.}
+
+%\section{Extracurricular Activities}
+%\cvitem{2017--Present}{Member, FAU Intramural Foam Sword Fighting Team (Dagorhir)}
+%\cvitem{July 2017}{1\textsuperscript{st} degree black belt, Karatedo}
+
+%\section{Technical Experience}
+%\cvline{Languages}{Python, Markdown, R, C++, SQL, SAS, Julia, Java}
+%\cvline{Technologies}{Vim, \LaTeX, Jupyter, Numpy, Pandas, Linux, Office, Slurm, Singularity}
+%\cvline{Analytics Platforms}{Apache Spark, ArcGIS, Tablou, Azure, Aws, PowerBi, git, excel, SQL Server, SAS institute, google analytics, databricks, Oracle}
+
+%\section{Selected Projects and Thesis}
+%\cvline{Github}{github.com/ASpraggin}
+%\cvline{Thesis}{github.com/ASpraggin/FishTracking/blob/master/report/spring\%202021/report.pdf}
+%\cvline{Thesis}{http://purl.flvc.org/fau/fd/FAUHT00162}
+
+
+\clearpage
+\end{document}
